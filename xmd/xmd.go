@@ -76,9 +76,11 @@ func runTask(cache *Cache) {
 	}
 
 	time.Sleep(5 * time.Second)
-	if time.Now().Minute()%5 == 0 {
-		if err := prize(cache); err != nil {
-			log.Println(err.Error())
+	if len(cache.user.cookies.Prize) > 50 {
+		if time.Now().Minute()%5 == 0 {
+			if err := prize(cache); err != nil {
+				log.Println(err.Error())
+			}
 		}
 	}
 }
