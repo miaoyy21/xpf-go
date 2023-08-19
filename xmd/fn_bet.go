@@ -29,7 +29,6 @@ func bet(cache *Cache) error {
 	// 显示当前中奖情况
 	log.Printf("⭐️⭐️⭐️ 第【%d】期：开奖结果【%d】，余额【%d】，开始执行分析 ...\n", cache.issue, cache.result, surplus)
 
-	// 仅投注当前赔率大于标准赔率的数字
 	var coverage float64
 
 	bets, aBets := make(map[int]float64), make(map[int]float64)

@@ -11,7 +11,7 @@ func (m BetMode) String() string {
 	case BetModeMode:
 		return "Mode - 在40秒～45秒时，选择权重值最大的自动投注模式（大小奇偶中边大尾小尾），且权重值大于400的投注"
 	case BetModeHalf:
-		return "Half - 按赔率系数从高到低，只选择约50%的数字"
+		return "Half - 按幸运值从高到低，只选择约50%的数字"
 	default:
 		return "<<< Undefined >>>"
 	}
