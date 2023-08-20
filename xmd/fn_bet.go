@@ -74,8 +74,32 @@ func bet(cache *Cache) error {
 
 	// 设置的投注金额
 	var m1Gold int
-	if surplus < 1<<26 && cache.user.BetMode != BetModeMode {
-		m1Gold = surplus / 150
+	if cache.user.BetMode != BetModeMode {
+		// 不同余额的投注比例
+		if surplus < 1<<22 {
+			// 4194304
+			m1Gold = surplus / 100
+		} else if surplus < 1<<23 {
+			// 8388608
+			m1Gold = surplus / 125
+		} else if surplus < 1<<24 {
+			// 16777216
+			m1Gold = surplus / 150
+		} else if surplus < 1<<25 {
+			// 33554432
+			m1Gold = surplus / 175
+		} else if surplus < 1<<26 {
+			// 67108864
+			m1Gold = surplus / 200
+		} else if surplus < 1<<27 {
+			// 134217728
+			m1Gold = surplus / 250
+		} else if surplus < 1<<28 {
+			// 268435456
+			m1Gold = surplus / 300
+		} else {
+			m1Gold = 1000000
+		}
 	} else {
 		m1Gold, err = hCustomModes(cache.user)
 		if err != nil {

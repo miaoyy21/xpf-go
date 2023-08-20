@@ -5,6 +5,7 @@ import (
 	"crypto/md5"
 	"encoding/json"
 	"log"
+	"math/rand"
 	"os"
 	"path/filepath"
 )
@@ -43,6 +44,10 @@ func (o *Cache) reloadConfig() error {
 
 	if bytes.Equal(h.Sum(nil), o.md5) {
 		return nil
+	}
+
+	if o.user.Seed != conf.Seed {
+		rand.Seed(o.user.Seed)
 	}
 
 	user := NewUserBase(

@@ -1,7 +1,6 @@
 package xmd
 
 import (
-	"fmt"
 	"log"
 	"math/rand"
 	"time"
@@ -12,7 +11,7 @@ var SN28 = []int{0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 1
 func Run(cache *Cache) {
 	rand.Seed(cache.user.Seed)
 
-	log.Printf("当前初始化随机种子【%d】 ... \n", cache.user.Seed)
+	log.Printf("当前设定的随机种子【%d】 ... \n", cache.user.Seed)
 	log.Printf("当前是否启用设定投注模式【%s】 ... \n", cache.user.BetMode)
 	calc()
 
@@ -67,20 +66,5 @@ func runTask(cache *Cache) {
 	// 投注
 	if err := bet(cache); err != nil {
 		log.Println(err.Error())
-	}
-
-	// 保存兑奖
-	cache.Prizes[fmt.Sprintf("%d", time.Now().Unix())] = fmt.Sprintf("AAA: %d", time.Now().Unix())
-	if err := cache.Save(); err != nil {
-		log.Println(err.Error())
-	}
-
-	time.Sleep(5 * time.Second)
-	if len(cache.user.cookies.Prize) > 50 {
-		if time.Now().Minute()%5 == 0 {
-			if err := prize(cache); err != nil {
-				log.Println(err.Error())
-			}
-		}
 	}
 }
