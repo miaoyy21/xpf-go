@@ -11,7 +11,7 @@ var SN28 = []int{0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 1
 func Run(cache *Cache) {
 	rand.Seed(cache.user.Seed)
 
-	log.Printf("当前设定的随机种子【%d】 ... \n", cache.user.Seed)
+	log.Printf("当前设置的随机种子【%d】 ... \n", cache.user.Seed)
 	log.Printf("当前是否启用设定投注模式【%s】 ... \n", cache.user.BetMode)
 	calc()
 
