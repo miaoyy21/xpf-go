@@ -153,14 +153,14 @@ func bet(cache *Cache) error {
 
 // 使用基于投注模式方式投注
 func betMode(cache *Cache, issue string, m1Gold int, bets map[int]float64) error {
-	//rs := make([]int, 0, len(bets))
-	//for result := range bets {
-	//	rs = append(rs, result)
-	//}
-	//
-	//// 数字排序
-	//sort.Ints(rs)
-	//log.Printf("第【%s】期：预投注数字【%s】 >>>>>>>>>> \n", issue, fmtIntSlice(rs))
+	rs := make([]int, 0, len(bets))
+	for result := range bets {
+		rs = append(rs, result)
+	}
+
+	// 数字排序
+	sort.Ints(rs)
+	log.Printf("第【%s】期：预投注数字【%s】 >>>>>>>>>> \n", issue, fmtIntSlice(rs))
 
 	// 确定投注模式ID
 	md := 400
@@ -176,51 +176,51 @@ func betMode(cache *Cache, issue string, m1Gold int, bets map[int]float64) error
 		return err
 	}
 
-	//// 投注模式之外的数字
-	//ams, extras := extraFn(modeId, m1Gold, bets)
-	//if len(extras) > 0 {
-	//	log.Printf("第【%s】期：额外投注数字【%s】>>>>>>>>>> \n", issue, fmtIntSlice(m2sFn(extras)))
-	//}
-	//
-	//// 使用单数字投注模式，必须使用其提供的标准投注金额
-	//stdBets := []int{200000, 50000, 10000, 5000, 2000, 1000, 500}
-	//betMaps := make(map[int][]int)
-	//
-	//for _, stdBet := range stdBets {
-	//	betSlice, ok := betMaps[stdBet]
-	//	if !ok {
-	//		betSlice = make([]int, 0)
-	//	}
-	//
-	//	for result, betGold := range extras {
-	//		qn := betGold / stdBet
-	//		if qn > 0 {
-	//			for i := 0; i < qn; i++ {
-	//				betSlice = append(betSlice, result)
-	//			}
-	//
-	//			extras[result] = betGold - qn*stdBet
-	//		}
-	//	}
-	//
-	//	sort.Ints(betSlice)
-	//	betMaps[stdBet] = betSlice
-	//}
-	//
-	//// 单数字投注
-	//latest = ams
-	//for _, stdBet := range stdBets {
-	//	if len(betMaps[stdBet]) > 0 {
-	//		log.Printf("第【%s】期：押注金额【%-6d】，押注数字【%s】，投注成功 >>>>>>>>>> \n", issue, stdBet, fmtIntSlice(betMaps[stdBet]))
-	//	}
-	//
-	//	for _, result := range betMaps[stdBet] {
-	//		latest[result] = struct{}{}
-	//		if err := hBetting1(issue, stdBet, result, cache.user); err != nil {
-	//			return err
-	//		}
-	//	}
-	//}
+	// 投注模式之外的数字
+	ams, extras := extraFn(modeId, m1Gold, bets)
+	if len(extras) > 0 {
+		log.Printf("第【%s】期：额外投注数字【%s】>>>>>>>>>> \n", issue, fmtIntSlice(m2sFn(extras)))
+	}
+
+	// 使用单数字投注模式，必须使用其提供的标准投注金额
+	stdBets := []int{200000, 50000, 10000, 5000, 2000, 1000, 500}
+	betMaps := make(map[int][]int)
+
+	for _, stdBet := range stdBets {
+		betSlice, ok := betMaps[stdBet]
+		if !ok {
+			betSlice = make([]int, 0)
+		}
+
+		for result, betGold := range extras {
+			qn := betGold / stdBet
+			if qn > 0 {
+				for i := 0; i < qn; i++ {
+					betSlice = append(betSlice, result)
+				}
+
+				extras[result] = betGold - qn*stdBet
+			}
+		}
+
+		sort.Ints(betSlice)
+		betMaps[stdBet] = betSlice
+	}
+
+	// 单数字投注
+	latest = ams
+	for _, stdBet := range stdBets {
+		if len(betMaps[stdBet]) > 0 {
+			log.Printf("第【%s】期：押注金额【%-6d】，押注数字【%s】，投注成功 >>>>>>>>>> \n", issue, stdBet, fmtIntSlice(betMaps[stdBet]))
+		}
+
+		for _, result := range betMaps[stdBet] {
+			latest[result] = struct{}{}
+			if err := hBetting1(issue, stdBet, result, cache.user); err != nil {
+				return err
+			}
+		}
+	}
 
 	return nil
 }
