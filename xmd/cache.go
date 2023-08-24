@@ -61,7 +61,7 @@ func NewCache(dir string) (*Cache, error) {
 	)
 
 	secs := conf.Secs
-	if conf.BetMode == BetModeMode {
+	if conf.BetMode == BetModeModeAll || conf.BetMode == BetModeModeOnly {
 		secs = 40
 		log.Printf("由于设定的投注为Mode模式，将投注时间强制改为40秒～45秒\n")
 	}

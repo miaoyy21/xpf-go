@@ -13,7 +13,7 @@ var latest = make(map[int]struct{})
 
 func bet(cache *Cache) error {
 	issue := strconv.Itoa(cache.issue + 1)
-	if cache.user.BetMode == BetModeMode {
+	if cache.user.BetMode == BetModeModeAll || cache.user.BetMode == BetModeModeOnly {
 		ms := rand.Intn(5000)
 
 		log.Printf("第【%d】期：在Mode投注模式下，%9.2f秒再进行投注\n", cache.issue, float64(ms)/1000)
@@ -74,7 +74,7 @@ func bet(cache *Cache) error {
 
 	// 设置的投注金额
 	var m1Gold int
-	if cache.user.BetMode != BetModeMode {
+	if cache.user.BetMode != BetModeModeAll && cache.user.BetMode != BetModeModeOnly {
 		// 不同余额的投注比例
 		if surplus < 1<<22 {
 			// 4194304
@@ -138,8 +138,12 @@ func bet(cache *Cache) error {
 		if err := betSingle(cache, issue, mrx, m1Gold, bets); err != nil {
 			return err
 		}
-	case BetModeMode:
-		if err := betMode(cache, issue, m1Gold, bets); err != nil {
+	case BetModeModeAll:
+		if err := betMode(cache, issue, m1Gold, bets, false); err != nil {
+			return err
+		}
+	case BetModeModeOnly:
+		if err := betMode(cache, issue, m1Gold, bets, true); err != nil {
 			return err
 		}
 	case BetModeHalf:
@@ -152,15 +156,17 @@ func bet(cache *Cache) error {
 }
 
 // 使用基于投注模式方式投注
-func betMode(cache *Cache, issue string, m1Gold int, bets map[int]float64) error {
-	rs := make([]int, 0, len(bets))
-	for result := range bets {
-		rs = append(rs, result)
-	}
+func betMode(cache *Cache, issue string, m1Gold int, bets map[int]float64, isOnly bool) error {
+	if !isOnly {
+		rs := make([]int, 0, len(bets))
+		for result := range bets {
+			rs = append(rs, result)
+		}
 
-	// 数字排序
-	sort.Ints(rs)
-	log.Printf("第【%s】期：预投注数字【%s】 >>>>>>>>>> \n", issue, fmtIntSlice(rs))
+		// 数字排序
+		sort.Ints(rs)
+		log.Printf("第【%s】期：预投注数字【%s】 >>>>>>>>>> \n", issue, fmtIntSlice(rs))
+	}
 
 	// 确定投注模式ID
 	md := 400
@@ -174,6 +180,11 @@ func betMode(cache *Cache, issue string, m1Gold int, bets map[int]float64) error
 	log.Printf("第【%s】期：使用投注模式【%s】 >>>>>>>>>> \n", issue, modeName)
 	if err := hModesBetting(issue, modeId, cache.user); err != nil {
 		return err
+	}
+
+	// 仅投注模式
+	if isOnly {
+		return nil
 	}
 
 	// 投注模式之外的数字
