@@ -9,9 +9,9 @@ func (m BetMode) String() string {
 	case BetModeWork:
 		return "Work - 在[08:30,11:30]、[14:30,17:00]、[19:30,21:30]不投注"
 	case BetModeModeAll:
-		return "ModeAll - 在40秒～45秒时，选择权重值最大的自动投注模式（大小奇偶中边大尾小尾）和其它符合统计的数字，且权重值大于400的投注"
+		return "ModeAll - 在40秒～45秒时，选择权重值最大的自动投注模式（大小奇偶中边大尾小尾）和其它符合统计的数字，且权重值大于325的投注"
 	case BetModeModeOnly:
-		return "ModeOnly - 在40秒～45秒时，仅选择权重值最大的自动投注模式（大小奇偶中边大尾小尾），且权重值大于400的投注"
+		return "ModeOnly - 在40秒～45秒时，仅选择权重值最大的自动投注模式（大小奇偶中边大尾小尾），且权重值大于325的投注"
 	case BetModeHalf:
 		return "Half - 按幸运值从高到低，只选择约50%的数字"
 	default:

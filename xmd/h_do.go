@@ -4,7 +4,6 @@ import (
 	"bytes"
 	"encoding/json"
 	"io"
-	"log"
 	"net/http"
 	"strconv"
 	"strings"
@@ -113,6 +112,5 @@ func buildCookie(q string) string {
 		ns = append(ns, strings.Join([]string{k, nv}, "="))
 	}
 
-	log.Printf("Cookie is %q \n", strings.Join(ns, "; "))
 	return strings.Join(ns, "; ")
 }

@@ -169,7 +169,7 @@ func betMode(cache *Cache, issue string, m1Gold int, bets map[int]float64, isOnl
 	}
 
 	// 确定投注模式ID
-	md := 400
+	md := 325
 	modeId, modeName := modeFn(bets, md)
 	if modeId == 0 {
 		log.Printf("第【%s】期：所有模式权重均不超过%d，的无法确定投注模式，暂不投注 >>>>>>>>>> \n", issue, md)
