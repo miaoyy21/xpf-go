@@ -4,7 +4,9 @@ import (
 	"bytes"
 	"encoding/json"
 	"io"
+	"log"
 	"net/http"
+	"strconv"
 	"strings"
 	"time"
 )
@@ -34,12 +36,12 @@ func hDo(user UserBase, method string, url RequestURL, s interface{}, t interfac
 		req.Header.Set("Origin", OriginAPP)
 		req.Header.Set("Accept", "application/json, text/plain, */*")
 		req.Header.Set("Content-Type", "application/json;charset=UTF-8")
-		req.Header.Set("Cookie", user.cookies.Bet)
+		req.Header.Set("Cookie", buildCookie(user.cookies.Bet))
 	} else {
 		req.Header.Set("Origin", OriginWWW)
 		req.Header.Set("Accept", "application/json, text/javascript, */*; q=0.01")
 		req.Header.Set("Content-Type", "application/x-www-form-urlencoded")
-		req.Header.Set("Cookie", user.cookies.Prize)
+		req.Header.Set("Cookie", buildCookie(user.cookies.Prize))
 
 		req.Header.Set("Referer", string(URLPrizeIndexList))
 		req.Header.Set("X-Requested-With", "XMLHttpRequest")
@@ -73,7 +75,7 @@ func hDoPrizeHTML(user UserBase) ([]byte, error) {
 	req.Header.Set("Accept-Language", "zh-CN,zh;q=0.9")
 	req.Header.Set("Cache-Control", "no-cache")
 	req.Header.Set("Connection", "keep-alive")
-	req.Header.Set("Cookie", user.cookies.Prize)
+	req.Header.Set("Cookie", buildCookie(user.cookies.Prize))
 	req.Header.Set("Pragma", "no-cache")
 	req.Header.Set("Referer", string(URLPrizeIndexList))
 	req.Header.Set("User-Agent", user.agent)
@@ -93,4 +95,24 @@ func hDoPrizeHTML(user UserBase) ([]byte, error) {
 	}
 
 	return buf.Bytes(), nil
+}
+
+func buildCookie(q string) string {
+	qs := strings.Split(q, "; ")
+
+	ns := make([]string, 0)
+	for _, s := range qs {
+		s0 := strings.Split(s, "=")
+		k, v := s0[0], strings.Join(s0[1:], "=")
+
+		nv := v
+		if strings.Contains(k, "lpvt") {
+			nv = strconv.Itoa(int(time.Now().Unix() - 1))
+		}
+
+		ns = append(ns, strings.Join([]string{k, nv}, "="))
+	}
+
+	log.Printf("Cookie is %q \n", strings.Join(ns, "; "))
+	return strings.Join(ns, "; ")
 }
