@@ -114,27 +114,7 @@ func bet(cache *Cache) error {
 	}
 
 	switch cache.user.BetMode {
-	case BetModeAll:
-		if err := betSingle(cache, issue, mrx, m1Gold, bets); err != nil {
-			return err
-		}
-	case BetModeWork:
-		hms := time.Now().Format("15:04")
-		if (hms >= "08:30" && hms <= "11:30") || (hms >= "14:30" && hms <= "17:00") || (hms >= "19:30" && hms <= "21:30") {
-			w := 0
-			for _, isWin := range isWins {
-				if isWin {
-					w++
-				}
-			}
-
-			// 10次出现7次失败，那么暂停投注
-			if w <= 3 {
-				mrx = 0.00001
-				log.Printf("第【%s】期：属于特定时间【%s】，不进行投注 >>>>>>>>>> \n", issue, hms)
-			}
-		}
-
+	case BetModeCustom:
 		if err := betSingle(cache, issue, mrx, m1Gold, bets); err != nil {
 			return err
 		}

@@ -3,6 +3,7 @@ package xmd
 import (
 	"log"
 	"math/rand"
+	"strconv"
 	"time"
 )
 
@@ -10,8 +11,8 @@ var SN28 = []int{0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 1
 
 func Run(cache *Cache) {
 	rand.Seed(cache.user.Seed)
-
 	log.Printf("当前设置的随机种子【%d】 ... \n", cache.user.Seed)
+
 	log.Printf("当前是否启用设定投注模式【%s】 ... \n", cache.user.BetMode)
 	calc()
 
@@ -60,6 +61,34 @@ func runTask(cache *Cache) {
 			isWins = append(isWins, true)
 		} else {
 			isWins = append(isWins, false)
+		}
+	}
+
+	// 是否属于特定的投注时间段
+	if cache.user.BetMode == BetModeCustom {
+		isBet, hms := false, time.Now().Format("15:04")
+
+		for _, cs := range cache.user.Custom {
+			if hms >= cs.Start && hms <= cs.End {
+				isBet = true
+				break
+			}
+		}
+
+		if !isBet {
+			w := 0
+			for _, isWin := range isWins {
+				if isWin {
+					w++
+				}
+			}
+
+			// 10次出现7次失败，那么暂停投注
+			if w <= 3 {
+				latest = make(map[int]struct{})
+				log.Printf("第【%s】期：属于特定时间【%s】，不进行投注 >>>>>>>>>> \n", strconv.Itoa(cache.issue+1), hms)
+				return
+			}
 		}
 	}
 

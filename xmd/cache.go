@@ -56,7 +56,7 @@ func NewCache(dir string) (*Cache, error) {
 	}
 
 	user := NewUserBase(
-		conf.Seed, conf.BetMode, conf.Cookies, conf.Agent,
+		conf.Seed, conf.BetMode, conf.Custom, conf.Cookies, conf.Agent,
 		conf.Unix, conf.KeyCode, conf.DeviceId, conf.UserId, conf.Token,
 	)
 

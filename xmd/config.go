@@ -4,10 +4,8 @@ type BetMode string
 
 func (m BetMode) String() string {
 	switch m {
-	case BetModeAll:
-		return "All - 每期都投注"
-	case BetModeWork:
-		return "Work - 在[08:30,11:30]、[14:30,17:00]、[19:30,21:30]不投注"
+	case BetModeCustom:
+		return "Custom - 在特定的时间段进行投注"
 	case BetModeModeAll:
 		return "ModeAll - 在45秒～50秒时，选择权重值最大的自动投注模式（大小奇偶中边大尾小尾）和其它符合统计的数字，且权重值大于350的投注"
 	case BetModeModeOnly:
@@ -20,8 +18,7 @@ func (m BetMode) String() string {
 }
 
 var (
-	BetModeAll      BetMode = "All"
-	BetModeWork     BetMode = "Work"
+	BetModeCustom   BetMode = "Custom"
 	BetModeModeAll  BetMode = "ModeAll"
 	BetModeModeOnly BetMode = "ModeOnly"
 	BetModeHalf     BetMode = "Half"
@@ -32,8 +29,14 @@ type ConfigCookies struct {
 	Prize string `json:"prize"`
 }
 
+type CustomTime struct {
+	Start string `json:"start"`
+	End   string `json:"end"`
+}
+
 type Config struct {
 	BetMode  BetMode       `json:"bet_mode"`
+	Custom   []CustomTime  `json:"custom"`
 	Seed     int64         `json:"seed"`
 	Secs     float64       `json:"secs"`
 	Cookies  ConfigCookies `json:"cookies"`
