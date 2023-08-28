@@ -15,12 +15,12 @@ release:
 	CGO_ENABLED=0 GOOS=windows GOARCH=386 go build -o ${BINARY}_windows_386.exe
 
 	# Build for linux
-	go clean
-	CGO_ENABLED=0 GOOS=linux GOARCH=386 go build -o  ${BINARY}_linux_386
+#	go clean
+#	CGO_ENABLED=0 GOOS=linux GOARCH=386 go build -o  ${BINARY}_linux_386
 
 	# Build for mac
-	go clean
-	go build -o ${BINARY}_darwin_arm64
+#	go clean
+#	go build -o ${BINARY}_darwin_arm64
 
 	go clean
 

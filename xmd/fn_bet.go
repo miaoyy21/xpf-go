@@ -218,11 +218,12 @@ func betMode(cache *Cache, issue string, m1Gold int, bets map[int]float64, isOnl
 
 func betSingle(cache *Cache, issue string, mrx float64, m1Gold int, bets map[int]float64) error {
 	for _, result := range SN28 {
-		if _, ok := bets[result]; !ok || mrx*bets[result] <= 0.01 {
+		if rx, ok := bets[result]; !ok || mrx*bets[result] <= 0.01 {
 			continue
+		} else if rx > 0.5 {
+			latest[result] = struct{}{}
 		}
 
-		latest[result] = struct{}{}
 		betGold := int(mrx * bets[result] * float64(2*m1Gold) * float64(stds[result]) / 1000)
 		if err := hBetting1(issue, betGold, result, cache.user); err != nil {
 			return err

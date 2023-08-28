@@ -83,8 +83,8 @@ func runTask(cache *Cache) {
 				}
 			}
 
-			// 10次出现7次失败，那么暂停投注
-			if w <= 3 {
+			// 10次出现4次失败，那么暂停投注
+			if w <= 4 {
 				latest = make(map[int]struct{})
 				log.Printf("第【%s】期：属于特定时间【%s】，不进行投注 >>>>>>>>>> \n", strconv.Itoa(cache.issue+1), hms)
 				return
