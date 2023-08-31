@@ -13,8 +13,11 @@ func Run(cache *Cache) {
 	rand.Seed(cache.user.Seed)
 	log.Printf("当前设置的随机种子【%d】 ... \n", cache.user.Seed)
 
-	log.Printf("当前是否启用设定投注模式【%s】 ... \n", cache.user.BetMode)
 	calc()
+	log.Printf("当前投注模式【%s】 ... \n", cache.user.BetMode)
+	if cache.user.BetMode == BetModeCustom {
+		log.Printf("设定的投注时间：%s \n", cache.user.CustomString())
+	}
 
 	dua := time.Now().Sub(time.Now().Truncate(time.Minute))
 	log.Printf("%.2f秒后[%s]，将运行小鸡竞猜游戏 ...", cache.secs-dua.Seconds(), time.Now().Add(time.Second*time.Duration(cache.secs-dua.Seconds())).Format("2006-01-02 15:04:05"))

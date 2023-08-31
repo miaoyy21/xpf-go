@@ -60,10 +60,11 @@ func (o *Cache) reloadConfig() error {
 
 	log.Println("配置文件变化，重新加载配置文件完成 ...")
 	log.Printf("当前初始化随机种子【%d】 ... \n", o.user.Seed)
-	log.Printf("当前是否启用设定投注模式【%s】 ... \n", o.user.BetMode)
+	log.Printf("当前投注模式【%s】 ... \n", o.user.BetMode)
 	if o.user.BetMode == BetModeCustom {
 		log.Printf("设定的投注时间：%s \n", o.user.CustomString())
 	}
+
 	return nil
 }
 
