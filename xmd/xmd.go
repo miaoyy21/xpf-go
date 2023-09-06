@@ -53,8 +53,8 @@ func runTask(cache *Cache) {
 		log.Println(err.Error())
 	}
 
+	// 最新10期投注结果
 	if len(latest) > 0 {
-
 		// 尾部为最新期数的结果
 		if len(isWins) == 10 {
 			isWins = isWins[1:]
@@ -68,30 +68,28 @@ func runTask(cache *Cache) {
 	}
 
 	// 是否属于特定的投注时间段
-	if cache.user.BetMode == BetModeCustom {
-		isBet, hms := false, time.Now().Format("15:04")
+	isBet, hms := false, time.Now().Format("15:04")
 
-		for _, cs := range cache.user.Custom {
-			if hms >= cs.Start && hms <= cs.End {
-				isBet = true
-				break
+	for _, cs := range cache.user.Custom {
+		if hms >= cs.Start && hms <= cs.End {
+			isBet = true
+			break
+		}
+	}
+
+	if !isBet {
+		w := 0
+		for _, isWin := range isWins {
+			if isWin {
+				w++
 			}
 		}
 
-		if !isBet {
-			w := 0
-			for _, isWin := range isWins {
-				if isWin {
-					w++
-				}
-			}
-
-			// 10次出现4次失败，那么暂停投注
-			if w <= 4 {
-				latest = make(map[int]struct{})
-				log.Printf("第【%s】期：属于特定时间【%s】，不进行投注 >>>>>>>>>> \n", strconv.Itoa(cache.issue+1), hms)
-				return
-			}
+		// 10次出现6次失败，那么暂停投注
+		if w <= 4 {
+			latest = make(map[int]struct{})
+			log.Printf("第【%s】期：属于特定时间【%s】，不进行投注 >>>>>>>>>> \n", strconv.Itoa(cache.issue+1), hms)
+			return
 		}
 	}
 

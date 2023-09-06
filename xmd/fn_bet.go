@@ -2,6 +2,7 @@ package xmd
 
 import (
 	"log"
+	"math"
 	"math/rand"
 	"sort"
 	"strconv"
@@ -60,7 +61,7 @@ func bet(cache *Cache) error {
 		coverage = coverage + float64(stds[result])*rx
 	}
 
-	if rand.Float64() < 0.05 {
+	if rand.Float64() < 0.25 {
 		log.Printf("第【%s】期：总体幸运值不够，不进行投注 >>>>>>>>>> \n", issue)
 		latest = make(map[int]struct{})
 		return nil
@@ -149,7 +150,7 @@ func betMode(cache *Cache, issue string, m1Gold int, bets map[int]float64, isOnl
 	}
 
 	// 确定投注模式ID
-	md := 350
+	md := 400
 	modeId, modeName := modeFn(bets, md)
 	if modeId == 0 {
 		log.Printf("第【%s】期：所有模式权重均不超过%d，的无法确定投注模式，暂不投注 >>>>>>>>>> \n", issue, md)
@@ -224,8 +225,20 @@ func betSingle(cache *Cache, issue string, mrx float64, m1Gold int, bets map[int
 			latest[result] = struct{}{}
 		}
 
-		betGold := int(mrx * bets[result] * float64(2*m1Gold) * float64(stds[result]) / 1000)
-		if err := hBetting1(issue, betGold, result, cache.user); err != nil {
+		fGold := mrx * bets[result] * float64(2*m1Gold) * float64(stds[result]) / 1000
+
+		var iGold int
+		if fGold >= 1<<16 {
+			iGold = int(math.Round(fGold/2000.0) * 2000)
+		} else if fGold >= 1<<15 {
+			iGold = int(math.Round(fGold/1500.0) * 1500)
+		} else if fGold >= 1<<14 {
+			iGold = int(math.Round(fGold/1000.0) * 1000)
+		} else {
+			iGold = int(math.Round(fGold/500.0) * 500)
+		}
+
+		if err := hBetting1(issue, iGold, result, cache.user); err != nil {
 			return err
 		}
 	}
