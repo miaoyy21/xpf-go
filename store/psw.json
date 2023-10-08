@@ -1,0 +1,14 @@
+{
+  "version": "1.0.0",
+  "assetsVersion": "1.2.7",
+  "appStoreVerifyReceiptPassword": "bc1b60d645c74193b389006c7f2634df",
+  "mode": "debug",
+  "host": "127.0.0.1",
+  "port": "9966",
+  "dbHost": "127.0.0.1",
+  "dbPort": "3306",
+  "dbDatabase": "psw",
+  "dbUser": "root",
+  "dbPassword": "root",
+  "qrCode": "https://apps.apple.com/app/xpf%E8%B4%A6%E5%8F%B7%E6%96%87%E4%BB%B6%E5%8A%A0%E5%AF%86%E5%99%A8/id1620115691"
+}

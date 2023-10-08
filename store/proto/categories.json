@@ -1,0 +1,657 @@
+{
+  "default": [
+    {
+      "name": {
+        "zh_CN": "账号",
+        "zh_TW": "賬號",
+        "en_US": "Account ID"
+      },
+      "isPrimary": true,
+      "type": 1,
+      "minLines": 1,
+      "maxLines": 1
+    },
+    {
+      "name": {
+        "zh_CN": "密码",
+        "zh_TW": "密碼",
+        "en_US": "Password"
+      },
+      "isPrimary": false,
+      "type": 2,
+      "minLines": 1,
+      "maxLines": 1
+    },
+    {
+      "name": {
+        "zh_CN": "官方网站",
+        "zh_TW": "官方網站",
+        "en_US": "Official Website"
+      },
+      "isPrimary": false,
+      "type": 4,
+      "minLines": 1,
+      "maxLines": 1
+    },
+    {
+      "name": {
+        "zh_CN": "拍照",
+        "zh_TW": "拍照",
+        "en_US": "Photo"
+      },
+      "isPrimary": false,
+      "type": 8,
+      "minLines": 1,
+      "maxLines": 1
+    },
+    {
+      "name": {
+        "zh_CN": "备注",
+        "zh_TW": "備註",
+        "en_US": "Remark"
+      },
+      "isPrimary": false,
+      "type": 1,
+      "minLines": 3,
+      "maxLines": 5
+    }
+  ],
+  "categories": [
+    {
+      "protoId": 0,
+      "name": {
+        "zh_CN": "未分类",
+        "zh_TW": "未分類",
+        "en_US": "Uncategorized"
+      },
+      "fields": [
+        {
+          "name": {
+            "zh_CN": "账号",
+            "zh_TW": "賬號",
+            "en_US": "Account ID"
+          },
+          "isPrimary": true,
+          "type": 1,
+          "minLines": 1,
+          "maxLines": 1
+        },
+        {
+          "name": {
+            "zh_CN": "密码",
+            "zh_TW": "密碼",
+            "en_US": "Password"
+          },
+          "isPrimary": false,
+          "type": 2,
+          "minLines": 1,
+          "maxLines": 1
+        },
+        {
+          "name": {
+            "zh_CN": "官方网站",
+            "zh_TW": "官方網站",
+            "en_US": "Official Website"
+          },
+          "isPrimary": false,
+          "type": 4,
+          "minLines": 1,
+          "maxLines": 1
+        },
+        {
+          "name": {
+            "zh_CN": "拍照",
+            "zh_TW": "拍照",
+            "en_US": "Photo"
+          },
+          "isPrimary": false,
+          "type": 8,
+          "minLines": 1,
+          "maxLines": 1
+        },
+        {
+          "name": {
+            "zh_CN": "备注",
+            "zh_TW": "備註",
+            "en_US": "Remark"
+          },
+          "isPrimary": false,
+          "type": 1,
+          "minLines": 3,
+          "maxLines": 5
+        }
+      ]
+    },
+    {
+      "protoId": 110,
+      "name": {
+        "zh_CN": "应用",
+        "zh_TW": "應用",
+        "en_US": "Application"
+      },
+      "fields": [
+        {
+          "name": {
+            "zh_CN": "用户名",
+            "zh_TW": "用戶名",
+            "en_US": "User Name"
+          },
+          "isPrimary": true,
+          "type": 1,
+          "minLines": 1,
+          "maxLines": 1
+        },
+        {
+          "name": {
+            "zh_CN": "密码",
+            "zh_TW": "密碼",
+            "en_US": "Password"
+          },
+          "isPrimary": false,
+          "type": 2,
+          "minLines": 1,
+          "maxLines": 1
+        },
+        {
+          "name": {
+            "zh_CN": "官方网站",
+            "zh_TW": "官方網站",
+            "en_US": "Official Website"
+          },
+          "isPrimary": false,
+          "type": 4,
+          "minLines": 1,
+          "maxLines": 1
+        },
+        {
+          "name": {
+            "zh_CN": "拍照",
+            "zh_TW": "拍照",
+            "en_US": "Photo"
+          },
+          "isPrimary": false,
+          "type": 8,
+          "minLines": 1,
+          "maxLines": 1
+        },
+        {
+          "name": {
+            "zh_CN": "备注",
+            "zh_TW": "備註",
+            "en_US": "Remark"
+          },
+          "isPrimary": false,
+          "type": 1,
+          "minLines": 3,
+          "maxLines": 5
+        }
+      ]
+    },
+    {
+      "protoId": 120,
+      "name": {
+        "zh_CN": "游戏",
+        "zh_TW": "遊戲",
+        "en_US": "Game"
+      },
+      "fields": [
+        {
+          "name": {
+            "zh_CN": "账号",
+            "zh_TW": "賬號",
+            "en_US": "Account ID"
+          },
+          "isPrimary": true,
+          "type": 1,
+          "minLines": 1,
+          "maxLines": 1
+        },
+        {
+          "name": {
+            "zh_CN": "游戏区服",
+            "zh_TW": "遊戲區服",
+            "en_US": "Game Zone"
+          },
+          "isPrimary": false,
+          "type": 1,
+          "minLines": 1,
+          "maxLines": 1
+        },
+        {
+          "name": {
+            "zh_CN": "密码",
+            "zh_TW": "密碼",
+            "en_US": "Password"
+          },
+          "isPrimary": false,
+          "type": 2,
+          "minLines": 1,
+          "maxLines": 1
+        },
+        {
+          "name": {
+            "zh_CN": "安全锁",
+            "zh_TW": "安全鎖",
+            "en_US": "Security Lock"
+          },
+          "isPrimary": false,
+          "type": 2,
+          "minLines": 1,
+          "maxLines": 1
+        },
+        {
+          "name": {
+            "zh_CN": "官方网站",
+            "zh_TW": "官方網站",
+            "en_US": "Official Website"
+          },
+          "isPrimary": false,
+          "type": 4,
+          "minLines": 1,
+          "maxLines": 1
+        },
+        {
+          "name": {
+            "zh_CN": "备注",
+            "zh_TW": "備註",
+            "en_US": "Remark"
+          },
+          "isPrimary": false,
+          "type": 1,
+          "minLines": 3,
+          "maxLines": 5
+        }
+      ]
+    },
+    {
+      "protoId": 130,
+      "name": {
+        "zh_CN": "网站",
+        "zh_TW": "網站",
+        "en_US": "Website"
+      },
+      "fields": [
+        {
+          "name": {
+            "zh_CN": "用户名",
+            "zh_TW": "用戶名",
+            "en_US": "User ID"
+          },
+          "isPrimary": true,
+          "type": 1,
+          "minLines": 1,
+          "maxLines": 1
+        },
+        {
+          "name": {
+            "zh_CN": "密码",
+            "zh_TW": "密碼",
+            "en_US": "Password"
+          },
+          "isPrimary": false,
+          "type": 2,
+          "minLines": 1,
+          "maxLines": 1
+        },
+        {
+          "name": {
+            "zh_CN": "官方网站",
+            "zh_TW": "官方網站",
+            "en_US": "Official Website"
+          },
+          "isPrimary": false,
+          "type": 4,
+          "minLines": 1,
+          "maxLines": 1
+        },
+        {
+          "name": {
+            "zh_CN": "备注",
+            "zh_TW": "備註",
+            "en_US": "Remark"
+          },
+          "isPrimary": false,
+          "type": 1,
+          "minLines": 3,
+          "maxLines": 5
+        }
+      ]
+    },
+    {
+      "protoId": 140,
+      "name": {
+        "zh_CN": "证件卡",
+        "zh_TW": "證件卡",
+        "en_US": "ID Card"
+      },
+      "fields": [
+        {
+          "name": {
+            "zh_CN": "证件号",
+            "zh_TW": "證件號",
+            "en_US": "Certificate ID"
+          },
+          "isPrimary": true,
+          "type": 1,
+          "minLines": 1,
+          "maxLines": 1
+        },
+        {
+          "name": {
+            "zh_CN": "有效期限",
+            "zh_TW": "有效期限",
+            "en_US": "Valid Period"
+          },
+          "isPrimary": false,
+          "type": 1,
+          "minLines": 1,
+          "maxLines": 1
+        },
+        {
+          "name": {
+            "zh_CN": "正面照片",
+            "zh_TW": "正面照片",
+            "en_US": "Front Photo"
+          },
+          "isPrimary": false,
+          "type": 8,
+          "minLines": 1,
+          "maxLines": 1
+        },
+        {
+          "name": {
+            "zh_CN": "反面照片",
+            "zh_TW": "反面照片",
+            "en_US": "Negative Photo"
+          },
+          "isPrimary": false,
+          "type": 8,
+          "minLines": 1,
+          "maxLines": 1
+        },
+        {
+          "name": {
+            "zh_CN": "备注",
+            "zh_TW": "備註",
+            "en_US": "Remark"
+          },
+          "isPrimary": false,
+          "type": 1,
+          "minLines": 3,
+          "maxLines": 5
+        }
+      ]
+    },
+    {
+      "protoId": 150,
+      "name": {
+        "zh_CN": "银行卡",
+        "zh_TW": "銀行卡",
+        "en_US": "Bank Card"
+      },
+      "fields": [
+        {
+          "name": {
+            "zh_CN": "银行卡号",
+            "zh_TW": "銀行卡號",
+            "en_US": "Bank Card ID"
+          },
+          "isPrimary": true,
+          "type": 1,
+          "minLines": 1,
+          "maxLines": 1
+        },
+        {
+          "name": {
+            "zh_CN": "卡片类型",
+            "zh_TW": "卡片類型",
+            "en_US": "Card Type"
+          },
+          "isPrimary": false,
+          "type": 1,
+          "minLines": 1,
+          "maxLines": 1
+        },
+        {
+          "name": {
+            "zh_CN": "取款密码",
+            "zh_TW": "取款密碼",
+            "en_US": "Withdrawals Password"
+          },
+          "isPrimary": false,
+          "type": 2,
+          "minLines": 1,
+          "maxLines": 1
+        },
+        {
+          "name": {
+            "zh_CN": "正面照片",
+            "zh_TW": "正面照片",
+            "en_US": "Front Photo"
+          },
+          "isPrimary": false,
+          "type": 8,
+          "minLines": 1,
+          "maxLines": 1
+        },
+        {
+          "name": {
+            "zh_CN": "反面照片",
+            "zh_TW": "反面照片",
+            "en_US": "Negative Photo"
+          },
+          "isPrimary": false,
+          "type": 8,
+          "minLines": 1,
+          "maxLines": 1
+        },
+        {
+          "name": {
+            "zh_CN": "备注",
+            "zh_TW": "備註",
+            "en_US": "Remark"
+          },
+          "isPrimary": false,
+          "type": 1,
+          "minLines": 3,
+          "maxLines": 5
+        }
+      ]
+    },
+    {
+      "protoId": 160,
+      "name": {
+        "zh_CN": "会员卡",
+        "zh_TW": "會員卡",
+        "en_US": "VIP Card"
+      },
+      "fields": [
+        {
+          "name": {
+            "zh_CN": "会员卡号",
+            "zh_TW": "會員卡號",
+            "en_US": "VIP Card ID"
+          },
+          "isPrimary": true,
+          "type": 1,
+          "minLines": 1,
+          "maxLines": 1
+        },
+        {
+          "name": {
+            "zh_CN": "持卡人",
+            "zh_TW": "持卡人",
+            "en_US": "Card Holder"
+          },
+          "isPrimary": false,
+          "type": 1,
+          "minLines": 1,
+          "maxLines": 1
+        },
+        {
+          "name": {
+            "zh_CN": "有效期限",
+            "zh_TW": "有效期限",
+            "en_US": "Valid Period"
+          },
+          "isPrimary": false,
+          "type": 1,
+          "minLines": 1,
+          "maxLines": 1
+        },
+        {
+          "name": {
+            "zh_CN": "拍照",
+            "zh_TW": "拍照",
+            "en_US": "Photo"
+          },
+          "isPrimary": false,
+          "type": 8,
+          "minLines": 1,
+          "maxLines": 1
+        },
+        {
+          "name": {
+            "zh_CN": "备注",
+            "zh_TW": "備註",
+            "en_US": "Remark"
+          },
+          "isPrimary": false,
+          "type": 1,
+          "minLines": 3,
+          "maxLines": 5
+        }
+      ]
+    },
+    {
+      "protoId": 170,
+      "name": {
+        "zh_CN": "名片",
+        "zh_TW": "名片",
+        "en_US": "Business Card"
+      },
+      "fields": [
+        {
+          "name": {
+            "zh_CN": "联系电话",
+            "zh_TW": "聯繫電話",
+            "en_US": "Telephone"
+          },
+          "isPrimary": true,
+          "type": 1,
+          "minLines": 1,
+          "maxLines": 1
+        },
+        {
+          "name": {
+            "zh_CN": "公司名称",
+            "zh_TW": "公司名稱",
+            "en_US": "Company Name"
+          },
+          "isPrimary": false,
+          "type": 1,
+          "minLines": 1,
+          "maxLines": 1
+        },
+        {
+          "name": {
+            "zh_CN": "职位",
+            "zh_TW": "職位",
+            "en_US": "Position"
+          },
+          "isPrimary": false,
+          "type": 1,
+          "minLines": 1,
+          "maxLines": 1
+        },
+        {
+          "name": {
+            "zh_CN": "电子邮箱",
+            "zh_TW": "電子郵箱",
+            "en_US": "E-mail"
+          },
+          "isPrimary": false,
+          "type": 1,
+          "minLines": 1,
+          "maxLines": 1
+        },
+        {
+          "name": {
+            "zh_CN": "拍照",
+            "zh_TW": "拍照",
+            "en_US": "Photo"
+          },
+          "isPrimary": false,
+          "type": 8,
+          "minLines": 1,
+          "maxLines": 1
+        },
+        {
+          "name": {
+            "zh_CN": "备注",
+            "zh_TW": "備註",
+            "en_US": "Remark"
+          },
+          "isPrimary": false,
+          "type": 1,
+          "minLines": 3,
+          "maxLines": 5
+        }
+      ]
+    },
+    {
+      "protoId": 999,
+      "name": {
+        "zh_CN": "其它",
+        "zh_TW": "其它",
+        "en_US": "Other"
+      },
+      "fields": [
+        {
+          "name": {
+            "zh_CN": "唯一标识",
+            "zh_TW": "唯一標識",
+            "en_US": "Uniquely Identifies"
+          },
+          "isPrimary": true,
+          "type": 1,
+          "minLines": 1,
+          "maxLines": 1
+        },
+        {
+          "name": {
+            "zh_CN": "密码",
+            "zh_TW": "密碼",
+            "en_US": "Password"
+          },
+          "isPrimary": false,
+          "type": 2,
+          "minLines": 1,
+          "maxLines": 1
+        },
+        {
+          "name": {
+            "zh_CN": "拍照",
+            "zh_TW": "拍照",
+            "en_US": "Photo"
+          },
+          "isPrimary": false,
+          "type": 8,
+          "minLines": 1,
+          "maxLines": 1
+        },
+        {
+          "name": {
+            "zh_CN": "备注",
+            "zh_TW": "備註",
+            "en_US": "Remark"
+          },
+          "isPrimary": false,
+          "type": 1,
+          "minLines": 3,
+          "maxLines": 5
+        }
+      ]
+    }
+  ]
+}
