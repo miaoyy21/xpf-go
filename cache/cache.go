@@ -2,7 +2,7 @@ package cache
 
 import (
 	"github.com/sirupsen/logrus"
-	"psw/pb"
+	"xpf/pb"
 )
 
 var Cache = new(cache)

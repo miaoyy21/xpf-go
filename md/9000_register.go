@@ -11,9 +11,9 @@ import (
 	"github.com/sirupsen/logrus"
 	"google.golang.org/protobuf/proto"
 	"io"
-	"psw/cache"
-	"psw/ds"
-	"psw/pb"
+	"xpf/cache"
+	"xpf/ds"
+	"xpf/pb"
 )
 
 type Register struct {

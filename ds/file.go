@@ -2,7 +2,7 @@ package ds
 
 import (
 	"github.com/jinzhu/gorm"
-	"psw/pb"
+	"xpf/pb"
 )
 
 var MaxFileSizeM = 128

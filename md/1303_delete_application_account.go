@@ -3,8 +3,8 @@ package md
 import (
 	"github.com/jinzhu/gorm"
 	"google.golang.org/protobuf/proto"
-	"psw/ds"
-	"psw/pb"
+	"xpf/ds"
+	"xpf/pb"
 )
 
 type DeleteApplicationAccount struct {

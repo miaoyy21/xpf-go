@@ -3,9 +3,9 @@ package md
 import (
 	"github.com/jinzhu/gorm"
 	"google.golang.org/protobuf/proto"
-	"psw/cache"
-	"psw/ds"
-	"psw/pb"
+	"xpf/cache"
+	"xpf/ds"
+	"xpf/pb"
 )
 
 type LoadAssets struct {

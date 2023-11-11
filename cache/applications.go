@@ -5,7 +5,7 @@ import (
 	"google.golang.org/protobuf/proto"
 	"os"
 	"path/filepath"
-	"psw/pb"
+	"xpf/pb"
 )
 
 type application struct {
